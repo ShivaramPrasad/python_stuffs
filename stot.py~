@@ -1,0 +1,31 @@
+from audioplay import pyaudio
+from audiorecord import AudioRecord
+from audioanalysis import AudioAnalysis
+from constants import *
+from time import sleep
+ 
+audio_play = AudioPlay()
+audio_record = AudioRecord()
+audio_analysis = AudioAnalysis()
+ 
+while True:
+     
+    # girlfriend's question to Arkwood
+    audio_play.text_to_speech("Do you love me")
+ 
+    # record Arkwood's answer
+    voice_file = audio_record.voice()
+ 
+    # convert Arkwood's answer to text
+    answer = audio_analysis.speech_to_text(voice_file)
+ 
+    # girlfriend's emotional outpouring
+    if answer == YES:
+        audio_play.text_to_speech("I love you")
+    if answer == MAYBE:
+        audio_play.text_to_speech("Please love me")
+    elif answer == NO:
+        audio_play.text_to_speech("I hate you")
+ 
+    # give Arkwood a break before nagging him again
+    sleep(30)
